@@ -7,14 +7,6 @@ The model adds geography to the basic model outlined in the referenced paper. Th
 
 State populations are based on the 2010 Census. Shading indicates zombification of the population. The outbreak begins with a single zombie from Illinois...
 
-# Day 0
+# Synopsis
 
-![](outbreak/zombies_0.svg)
-
-# Day 3
-
-![](outbreak/zombies_3.svg)
-
-# Day 5
-
-![](outbreak/zombies_5.svg)
+![](outbreak/screenshot.png)
