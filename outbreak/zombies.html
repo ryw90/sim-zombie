@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<!--
+   This is a jQuery Tools standalone demo. Feel free to copy/paste.
+   http://flowplayer.org/tools/demos/
+
+   Do *not* reference CSS files and images from flowplayer.org when in
+   production Enjoy!
+-->
+<head>
+  <title>Zombie outbreak simulation</title>
+  <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script> 
+  <style>
+		/* styling for the image wrapper  */
+		#image_wrap {
+			/* dimensions */
+			width:1000px;
+			padding:15px 0;
+
+			/* centered */
+			text-align:center;
+
+			/* some "skinning" */
+			background-color:#ffffff;
+			outline:2px solid #ddd;
+
+		}
+
+	</style>
+</head>
+
+<body>
+
+<!-- wrapper element for the large image -->
+<div id="image_wrap">
+  <img src="img/blank.gif" width=950px height=550px />
+</div>
+
+<!-- wrapper element for thumbnails -->
+<div class="items">
+    <!-- 1-5 -->
+    <div>
+      <img src="zombies_0.svg" width=100px height=75px />
+	  <img src="zombies_1.svg" width=100px height=75px />
+	  <img src="zombies_2.svg" width=100px height=75px />
+	  <img src="zombies_3.svg" width=100px height=75px />
+	  <img src="zombies_4.svg" width=100px height=75px />
+    </div>
+
+    <!-- 5-10 -->
+    <div>
+      <img src="zombies_5.svg" width=100px height=75px />
+	  <img src="zombies_6.svg" width=100px height=75px />
+	  <img src="zombies_7.svg" width=100px height=75px />
+	  <img src="zombies_8.svg" width=100px height=75px />
+	  <img src="zombies_9.svg" width=100px height=75px />
+    </div>
+
+    <!-- 10-15 -->
+    <div>
+      <img src="zombies_10.svg" width=100px height=75px />
+	  <img src="zombies_11.svg" width=100px height=75px />
+	  <img src="zombies_12.svg" width=100px height=75px />
+	  <img src="zombies_13.svg" width=100px height=75px />
+	  <img src="zombies_14.svg" width=100px height=75px />
+    </div>
+
+    <!-- 16-20 -->
+    <div>
+      <img src="zombies_15.svg" width=100px height=75px />
+	  <img src="zombies_16.svg" width=100px height=75px />
+	  <img src="zombies_17.svg" width=100px height=75px />
+	  <img src="zombies_18.svg" width=100px height=75px />
+	  <img src="zombies_19.svg" width=100px height=75px />
+    </div>
+</div>
+
+<script>
+$(function() {
+
+$(".items img").click(function() {
+	// see if same thumb is being clicked
+	if ($(this).hasClass("active")) { return; }
+
+	// calclulate large image's URL based on the thumbnail URL
+	var url = $(this).attr("src").replace("_t", "");
+
+	// get handle to element that wraps the image and make it semi-transparent
+	var wrap = $("#image_wrap").fadeTo("medium", 0.5);
+
+	// the large image
+	var img = new Image();
+
+	// call this function after it's loaded
+	img.onload = function() {
+
+		// make wrapper fully visible
+		wrap.fadeTo("fast", 1);
+
+		// change the image
+		wrap.find("img").attr("src", url);
+
+	};
+
+	// begin loading the image
+	img.src = url;
+
+	// activate item
+	$(".items img").removeClass("active");
+	$(this).addClass("active");
+
+// when page loads simulate a "click" on the first image
+}).filter(":first").click();
+});
+</script>
+
+</body>
+</html>
